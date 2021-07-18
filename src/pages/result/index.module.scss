@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 36rpx 32rpx;
+}
+
+.summary {
+  display: flex;
+  margin-bottom: 44rpx;
+}
+
+.previewImg {
+  width: 388rpx;
+  height: 240rpx;
+  margin-right: 32rpx;
+}
+
+.frameCount {
+  font-size: 28rpx;
+  color: #e329ba;
+  padding-top: 12rpx;
+}
+
+.result {
+  display: flex;
+  margin-bottom: 40rpx;
+}
+
+.resultImg {
+  width: 286rpx;
+  height: 196rpx;
+  flex: none;
+  margin-right: 20rpx;
+}
+
+.resultInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultTitle {
+  font-size: 28rpx;
+  color: #333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+  min-height: 77rpx;
+}
+
+.episode {
+  font-size: 24rpx;
+  color: #e329ba;
+  margin-bottom: 8rpx;
+}
+
+.duration {
+  font-size: 24rpx;
+  color: #28d818;
+  margin-bottom: 8rpx;
+}
+
+.similarity {
+  font-size: 24rpx;
+  color: #999;
+}

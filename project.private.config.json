@@ -1,0 +1,23 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "检索结果页",
+          "pathName": "pages/result/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
