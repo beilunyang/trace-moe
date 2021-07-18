@@ -13,12 +13,24 @@
   width: 388rpx;
   height: 240rpx;
   margin-right: 32rpx;
+  border-radius: 8rpx;
+}
+
+.searchMeta {
+  display: flex;
+  flex-direction: column;
 }
 
 .frameCount {
   font-size: 28rpx;
   color: #e329ba;
   padding-top: 12rpx;
+  padding-bottom: 20rpx;
+}
+
+.time {
+  font-size: 28rpx;
+  color: #999;
 }
 
 .result {
@@ -31,6 +43,7 @@
   height: 196rpx;
   flex: none;
   margin-right: 20rpx;
+  border-radius: 8rpx;
 }
 
 .resultInfo {
@@ -47,7 +60,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   margin-bottom: 8rpx;
-  min-height: 77rpx;
 }
 
 .episode {

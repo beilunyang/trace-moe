@@ -8,12 +8,10 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async event => {
-  let { url, image, fileName, anilistID, anilistInfo } = event;
-  const endpoint = `https://api.trace.moe/search?cutBorders${
+  let { url, image, fileName, anilistID } = event;
+  const endpoint = `https://api.trace.moe/search?cutBorders&anilistInfo${
     anilistID ? "&anilistID=" + anilistID : ""
-  }${anilistInfo ? "&anilistInfo" : ""}${
-    url ? "&url=" + encodeURIComponent(url) : ""
-  }`;
+  }${url ? "&url=" + encodeURIComponent(url) : ""}`;
 
   let params = {};
 
@@ -38,14 +36,19 @@ exports.main = async event => {
     }
   }
 
+  const startTime = Date.now();
   const res = await fetch(endpoint, params);
+  const endTime = Date.now();
 
   const data = await res.json();
 
   if (res.ok) {
     return {
       code: 0,
-      data
+      data: {
+        ...data,
+        time: (endTime - startTime) / 1000
+      }
     };
   }
 

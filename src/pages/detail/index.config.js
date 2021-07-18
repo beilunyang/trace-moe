@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: "检索结果"
+  navigationBarTitleText: "番剧详情"
 };
