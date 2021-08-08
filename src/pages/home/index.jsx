@@ -30,7 +30,7 @@ class Home extends PureComponent {
   }
 
   onChoose = async () => {
-    const res = await wx.chooseImage({
+    const res = await Taro.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
