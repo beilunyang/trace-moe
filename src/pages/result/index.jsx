@@ -2,8 +2,8 @@ import { inject, observer } from 'mobx-react';
 import { View, Text, Image } from '@tarojs/components';
 import Taro from '@tarojs/taro'
 import { PureComponent } from 'react';
-import { Row, Block, Column } from '../../components/skeleton'
 import { AtActivityIndicator } from 'taro-ui'
+import { Row, Block, Column } from '../../components/skeleton'
 import service from '../../services'
 import styles from './index.module.scss'
 
@@ -22,6 +22,32 @@ class Result extends PureComponent {
     filePath = filePath && decodeURIComponent(filePath);
     await this.onSearch(url, filePath);
   }
+
+  onShareAppMessage() {
+    return {
+      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+      path: this.$instance.page.$taroPath,
+    };
+  }
+
+  onShareTimeline() {
+    const { url, filePath } = this.$instance.router.params;
+
+    let query = '';
+
+    if (url) {
+      query = `url=${url}`;
+    }
+
+    if (filePath) {
+      query = `filePath=${filePath}`;
+    }
+
+    return {
+      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+      query,
+    };
+  };
 
   $instance = Taro.getCurrentInstance();
 

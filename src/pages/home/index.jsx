@@ -9,6 +9,18 @@ import styles from './index.module.scss';
 @inject('searchStore')
 @observer
 class Home extends PureComponent {
+  onShareAppMessage() {
+    return {
+      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+    };
+  }
+
+  onShareTimeline() {
+    return {
+      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+    };
+  };
+
   onSearch = async (url, filePath) => {
     let query = '';
 
