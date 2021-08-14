@@ -1,18 +1,39 @@
+import { encode } from "js-base64";
+
 /* eslint-disable no-undef */
 const init = () => {
-  console.log("cloud.DYNAMIC_CURRENT_ENV:", qq.cloud.DYNAMIC_CURRENT_ENV);
   qq.cloud.init({
-    env: qq.cloud.DYNAMIC_CURRENT_ENV,
+    env: "trace-moe-qq-8c3086",
     traceUser: true
   });
 };
+
+qq.cloud.CDN =
+  qq.cloud.CDN ||
+  (async data => {
+    const { filePath } = data;
+    const res = await qq.cloud.uploadFile({
+      filePath,
+      cloudPath: encode(filePath)
+    });
+    if (res.fileID) {
+      const result = await qq.cloud.getTempFileURL({
+        fileList: [
+          {
+            fileID: res.fileID,
+            maxAge: 60 * 5
+          }
+        ]
+      });
+      return result?.fileList?.[0]?.tempFileURL;
+    }
+  });
 
 const search = async ({ url, filePath }) => {
   try {
     qq.showLoading({
       title: "正在检索"
     });
-    // TODO: 这里有问题，qq不支持cloud.CDN
     const res = await qq.cloud.callFunction({
       name: "search",
       data: {
@@ -20,14 +41,13 @@ const search = async ({ url, filePath }) => {
         fileName: filePath,
         image:
           filePath &&
-          qq.cloud.CDN({
+          (await qq.cloud.CDN({
             type: "filePath",
             filePath
-          })
+          }))
       }
     });
-
-    if (res.errMsg === "cloud.callFunction:ok") {
+    if (res.errMsg === "ok") {
       const { result } = res;
       if (result.code === 0) {
         qq.hideLoading();
@@ -89,7 +109,7 @@ const searchAnilist = async id => {
       }
     });
 
-    if (res.errMsg === "cloud.callFunction:ok") {
+    if (res.errMsg === "ok") {
       const { result } = res;
       if (result.code === 0) {
         return result.data.Media;
