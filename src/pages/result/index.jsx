@@ -30,6 +30,8 @@ class Result extends PureComponent {
     };
   }
 
+  // 分享到微信朋友圈的小程序处于单页模式
+  // 用户处于未登录状态, 云函数需要开启未登录模式, 否则打开朋友圈分享的页面接口会报错
   onShareTimeline() {
     const { url, filePath } = this.$instance.router.params;
 
