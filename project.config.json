@@ -51,5 +51,34 @@
 		"beforePreview": "",
 		"beforeUpload": ""
 	},
-	"condition": {}
+	"condition": {
+		"plugin": {
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"list": [
+				{
+					"id": -1,
+					"name": "检索结果页",
+					"pathName": "pages/result/index",
+					"query": "",
+					"scene": ""
+				},
+				{
+					"id": -1,
+					"name": "动画详情页",
+					"pathName": "pages/detail/index",
+					"query": "",
+					"scene": ""
+				}
+			],
+			"current": -1
+		}
+	}
 }

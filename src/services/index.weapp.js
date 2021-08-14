@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const init = () => {
-  console.log("cloud.DYNAMIC_CURRENT_ENV:", wx.cloud.DYNAMIC_CURRENT_ENV);
   wx.cloud.init({
     env: wx.cloud.DYNAMIC_CURRENT_ENV,
     traceUser: true
@@ -9,10 +8,6 @@ const init = () => {
 
 const search = async ({ url, filePath }) => {
   try {
-    wx.showLoading({
-      title: "正在检索"
-    });
-
     const res = await wx.cloud.callFunction({
       name: "search",
       data: {

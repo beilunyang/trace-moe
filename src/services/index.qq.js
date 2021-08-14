@@ -31,9 +31,6 @@ qq.cloud.CDN =
 
 const search = async ({ url, filePath }) => {
   try {
-    qq.showLoading({
-      title: "正在检索"
-    });
     const res = await qq.cloud.callFunction({
       name: "search",
       data: {

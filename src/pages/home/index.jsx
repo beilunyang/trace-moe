@@ -5,28 +5,24 @@ import { View, Image } from '@tarojs/components'
 import { inject, observer } from 'mobx-react';
 import { AtIcon, AtInput } from 'taro-ui';
 import styles from './index.module.scss';
-import service from '../../services'
 
 @inject('searchStore')
 @observer
 class Home extends PureComponent {
-  componentDidMount () {
-    service.init();
-  }
-
   onSearch = async (url, filePath) => {
-    const data = await service.search({
-      url,
-      filePath,
-    });
+    let query = '';
 
-    if (data) {
-      this.props.searchStore.setSearchedImage(url || filePath);
-      this.props.searchStore.setSearchResult(data);
-      Taro.navigateTo({
-        url: '/pages/result/index',
-      });
+    if (url) {
+      query = `url=${encodeURIComponent(url)}`;
     }
+
+    if (filePath) {
+      query = `filePath=${encodeURIComponent(filePath)}`;
+    }
+    this.props.searchStore.setSearchedImage(url || filePath);
+    Taro.navigateTo({
+      url: `/pages/result/index?${query}`
+    });
   }
 
   onChoose = async () => {
@@ -39,7 +35,7 @@ class Home extends PureComponent {
     this.onSearch(null, filePath);
   }
 
-  render () {
+  render() {
     return (
       <View className={styles.container}>
         <Image src={require('../../assets/logo.svg')} className={styles.logo} />

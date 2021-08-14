@@ -1,0 +1,36 @@
+$skeleton-animation-blink-duration: 1.2s;
+$skeleton-animation-elastic-duration: 0.8s;
+
+@keyframes skeleton-blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes skeleton-elastic {
+  50% {
+    transform: scaleX(0.3);
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  animation: skeleton-blink $skeleton-animation-blink-duration ease-in-out
+    infinite;
+}
+
+.blockElastic {
+  transform-origin: left center;
+  animation: skeleton-blink $skeleton-animation-blink-duration ease-in-out
+      infinite,
+    skeleton-elastic $skeleton-animation-elastic-duration ease-in-out infinite;
+}

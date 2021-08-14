@@ -2,18 +2,64 @@ import { inject, observer } from 'mobx-react';
 import { View, Text, Image } from '@tarojs/components';
 import Taro from '@tarojs/taro'
 import { PureComponent } from 'react';
+import { Row, Block, Column } from '../../components/skeleton'
+import { AtActivityIndicator } from 'taro-ui'
+import service from '../../services'
 import styles from './index.module.scss'
 
 
 @inject('searchStore')
 @observer
 class Result extends PureComponent {
+  state = {
+    loaded: false,
+  };
+
+  async componentDidMount() {
+    service.init();
+    let { url, filePath } = this.$instance.router.params;
+    url = url && decodeURIComponent(url);
+    filePath = filePath && decodeURIComponent(filePath);
+    await this.onSearch(url, filePath);
+  }
+
+  $instance = Taro.getCurrentInstance();
+
+  onSearch = async (url, filePath) => {
+    const data = await service.search({
+      url,
+      filePath,
+    });
+
+    this.setState({
+      loaded: true,
+    });
+
+    if (data) {
+      this.props.searchStore.setSearchResult(data);
+    }
+  }
 
   onToDetail = (idx, id) => {
     Taro.navigateTo({
       url: `/pages/detail/index?idx=${idx}&id=${id}`,
     });
   };
+
+  renderSkeleton = () => {
+    return new Array(5).fill().map((_, idx) => (
+      <Row key={idx} mt={idx === 0 ? 0 : 46}>
+        <Block w='286' h='196' r='8' />
+        <Column>
+          <Block w='336' h='34' ml='18' mt='4' />
+          <Block w='142' h='34' ml='18' mt='18' />
+          <Block w='270' h='34' ml='18' mt='18' />
+          <Block w='252' h='34' ml='18' mt='18' />
+        </Column>
+      </Row>
+    ))
+  };
+
 
   renderResults = () => {
     const { results } = this.props.searchStore;
@@ -32,17 +78,31 @@ class Result extends PureComponent {
 
   render() {
     const { formatedFrameCount, searchedImage, time } = this.props.searchStore;
+    const { loaded } = this.state;
     return (
       <View className={styles.container}>
         <View className={styles.summary}>
           <Image className={styles.previewImg} src={searchedImage} />
           <View className={styles.searchMeta}>
-            <Text className={styles.frameCount}>共检索{formatedFrameCount}帧动画</Text>
-            <Text className={styles.time}>耗时{time}s</Text>
+            {
+              loaded ? (
+                <>
+                  <Text className={styles.frameCount}>共检索{formatedFrameCount}帧动画</Text>
+                  <Text className={styles.time}>耗时{time}s</Text>
+                </>
+              ) : (
+                <View className={styles.activityIndicator}>
+                  <AtActivityIndicator
+                    content='正在检索中'
+                    color='#e329ba'
+                  />
+                </View>
+              )
+            }
           </View>
         </View>
         <View className={styles.results}>
-          {this.renderResults()}
+          {loaded ? this.renderResults() : this.renderSkeleton()}
         </View>
       </View>
     );
