@@ -17,10 +17,21 @@ class Result extends PureComponent {
 
   async componentDidMount() {
     service.init();
-    let { url, filePath } = this.$instance.router.params;
-    url = url && decodeURIComponent(url);
-    filePath = filePath && decodeURIComponent(filePath);
-    await this.onSearch(url, filePath);
+    let searchedUrl;
+    let searchedFilePath;
+    const { forwardMaterials } = await Taro.getLaunchOptionsSync();
+    if (forwardMaterials) {
+      // 从聊天素材打开小程序
+      const latestIdx = forwardMaterials.length - 1;
+      searchedFilePath = forwardMaterials[latestIdx].path;
+    } else {
+      // 从Home页或者分享打开小程序
+      let { url, filePath } = this.$instance.router.params;
+      searchedUrl = url && decodeURIComponent(url);
+      searchedFilePath = filePath && decodeURIComponent(filePath);
+    }
+    this.props.searchStore.setSearchedImage(searchedUrl || searchedFilePath);
+    await this.onSearch(searchedUrl, searchedFilePath);
   }
 
   onShareAppMessage() {

@@ -107,7 +107,10 @@ class Detail extends PureComponent {
             }
             {
               genres?.length > 0 ? (
-                <Text className={styles.item}>类型：{genres.join(',')}</Text>
+                <View className={styles.item}>
+                  <Text>类型：</Text>
+                  <Text className={styles.breakAll}>{genres.join(',')}</Text>
+                </View>
               ) : null
             }
             {

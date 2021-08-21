@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -15,7 +16,17 @@
           "name": "检索结果页",
           "pathName": "pages/result/index",
           "query": "",
-          "scene": null
+          "scene": 1173,
+          "referrerInfo": {
+            "materials": [
+              {
+                "type": "image/png",
+                "path": "C:\\Users\\mayn\\Desktop\\I]0)X@D94TMWTNV}P6(AQ1P.png",
+                "name": "I]0)X@D94TMWTNV}P6(AQ1P.png",
+                "size": 1483513
+              }
+            ]
+          }
         }
       ]
     }

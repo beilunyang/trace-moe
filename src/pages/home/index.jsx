@@ -31,7 +31,6 @@ class Home extends PureComponent {
     if (filePath) {
       query = `filePath=${encodeURIComponent(filePath)}`;
     }
-    this.props.searchStore.setSearchedImage(url || filePath);
     Taro.navigateTo({
       url: `/pages/result/index?${query}`
     });
