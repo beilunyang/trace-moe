@@ -19,7 +19,7 @@ class Result extends PureComponent {
     service.init();
     let searchedUrl;
     let searchedFilePath;
-    const { forwardMaterials } = await Taro.getLaunchOptionsSync();
+    const { forwardMaterials } = await Taro.getEnterOptionsSync();
     if (forwardMaterials) {
       // 从聊天素材打开小程序
       const latestIdx = forwardMaterials.length - 1;
@@ -36,7 +36,7 @@ class Result extends PureComponent {
 
   onShareAppMessage() {
     return {
-      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+      title: 'TraceMoe以图搜番|智能识别图片截图所属动漫番剧名称',
       path: this.$instance.page.$taroPath,
     };
   }
@@ -57,7 +57,7 @@ class Result extends PureComponent {
     }
 
     return {
-      title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
+      title: 'TraceMoe以图搜番|智能识别图片截图所属动漫番剧名称',
       query,
     };
   };
