@@ -148,7 +148,11 @@ class Detail extends PureComponent {
     } = this.props.searchStore.results[idx];
     return (
       <View className={styles.container}>
-        <Video src={video} className={styles.video} />
+        {
+          process.env.TARO_ENV !== 'qq' ? (
+            <Video src={video} className={styles.video} />
+          ) : null
+        }
         <View className={styles.videoInfo}>
           <Text className={styles.episode}>{episode}</Text>
           <Text className={styles.duration}>{duration}</Text>
