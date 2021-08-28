@@ -6,6 +6,7 @@ import { AtActivityIndicator } from 'taro-ui'
 import { Row, Block, Column } from '../../components/skeleton'
 import service from '../../services'
 import styles from './index.module.scss'
+import { getEnterOptionsSync } from '../../qqPolyfill';
 
 
 @inject('searchStore')
@@ -13,13 +14,15 @@ import styles from './index.module.scss'
 class Result extends PureComponent {
   state = {
     loaded: false,
+    previewImgError: false,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     service.init();
     let searchedUrl;
     let searchedFilePath;
-    const { forwardMaterials } = await Taro.getEnterOptionsSync();
+    const { forwardMaterials } = Taro.getEnterOptionsSync() || getEnterOptionsSync();
+    console.log('componentDidMount forwardMaterials:', forwardMaterials);
     if (forwardMaterials) {
       // 从聊天素材打开小程序
       const latestIdx = forwardMaterials.length - 1;
@@ -30,8 +33,9 @@ class Result extends PureComponent {
       searchedUrl = url && decodeURIComponent(url);
       searchedFilePath = filePath && decodeURIComponent(filePath);
     }
+    console.log('searchedImage:', searchedUrl || searchedFilePath);
     this.props.searchStore.setSearchedImage(searchedUrl || searchedFilePath);
-    await this.onSearch(searchedUrl, searchedFilePath);
+    this.onSearch(searchedUrl, searchedFilePath);
   }
 
   onShareAppMessage() {
@@ -85,6 +89,13 @@ class Result extends PureComponent {
     });
   };
 
+  // 从聊天素材打开QQ小程序时，返回的本地path路径不能被Image正常显示
+  onPreviewImgError = () => {
+    this.setState({
+      previewImgError: true,
+    });
+  };
+
   renderSkeleton = () => {
     return new Array(5).fill().map((_, idx) => (
       <Row key={idx} mt={idx === 0 ? 0 : 46}>
@@ -117,11 +128,15 @@ class Result extends PureComponent {
 
   render() {
     const { formatedFrameCount, searchedImage, time } = this.props.searchStore;
-    const { loaded } = this.state;
+    const { loaded, previewImgError } = this.state;
     return (
       <View className={styles.container}>
         <View className={styles.summary}>
-          <Image className={styles.previewImg} src={searchedImage} />
+          {
+            !previewImgError ? (
+              <Image className={styles.previewImg} src={searchedImage} onError={this.onPreviewImgError} />
+            ) : null
+          }
           <View className={styles.searchMeta}>
             {
               loaded ? (
