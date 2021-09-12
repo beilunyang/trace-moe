@@ -15,6 +15,19 @@ class Home extends PureComponent {
     };
   }
 
+  onValidateUrl = (url) => {
+    const regx = /^(((ht|f)tps?):\/\/)?[\w-]+(\.[\w-]+)+([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/;
+    const result = regx.test(url);
+    if (!result) {
+      Taro.showToast({
+        title: '请输入正确的图片地址',
+        icon: 'none',
+        duration: 2500,
+      });
+    }
+    return result;
+  };
+
   onShareTimeline() {
     return {
       title: 'TraceMoe-动画场景搜索引擎/搜索动画图片所属番剧',
@@ -24,7 +37,19 @@ class Home extends PureComponent {
   onSearch = async (url, filePath) => {
     let query = '';
 
+    if (!url && !filePath) {
+      Taro.showToast({
+        title: '请输入图片地址或上传本地图片',
+        icon: 'none',
+        duration: 3500,
+      });
+      return;
+    }
+
     if (url) {
+      if (!this.onValidateUrl(url)) {
+        return;
+      }
       query = `url=${encodeURIComponent(url)}`;
     }
 
