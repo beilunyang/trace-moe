@@ -3,3 +3,26 @@
 @import "~taro-ui/dist/style/components/input.scss";
 @import "~taro-ui/dist/style/components/activity-indicator.scss";
 @import "~taro-ui/dist/style/components/loading.scss";
+@import "~taro-ui/dist/style/components/fab.scss";
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url("./assets/fonts/iconfont.woff2") format("woff2"),
+    url("./assets/fonts/iconfont.woff") format("woff"),
+    url("./assets/fonts/iconfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-help:before {
+  content: "\e605";
+}

@@ -23,3 +23,14 @@
 .placeholder {
   font-size: 28rpx;
 }
+
+.fab {
+  position: fixed;
+  right: 32rpx;
+  bottom: 32rpx;
+  background-color: #000;
+
+  &:active {
+    background-color: #000;
+  }
+}

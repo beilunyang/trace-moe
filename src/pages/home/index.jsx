@@ -3,7 +3,7 @@ import { PureComponent } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
 import { inject, observer } from 'mobx-react';
-import { AtIcon, AtInput } from 'taro-ui';
+import { AtIcon, AtInput, AtFab } from 'taro-ui';
 import styles from './index.module.scss';
 
 @inject('searchStore')
@@ -86,6 +86,9 @@ class Home extends PureComponent {
         >
           <AtIcon value='folder' color='#d99023' onClick={this.onChoose} />
         </AtInput>
+        {/* <AtFab className={styles.fab} size='small'>
+          <AtIcon prefixClass='fa' value='help' color='#fff' />
+        </AtFab> */}
       </View>
     )
   }
