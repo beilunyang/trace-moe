@@ -1,11 +1,4 @@
-export default {
-  pages: ["pages/home/index", "pages/detail/index", "pages/result/index"],
-  window: {
-    backgroundTextStyle: "light",
-    navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "WeChat",
-    navigationBarTextStyle: "black"
-  },
+const weappConfig = process.env.TARO_ENV === 'weapp' ? {
   supportedMaterials: [
     {
       materialType: "image/*",
@@ -14,4 +7,15 @@ export default {
       path: "pages/result/index"
     }
   ]
+} : {};
+
+export default {
+  pages: ["pages/home/index", "pages/detail/index", "pages/result/index"],
+  window: {
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTitleText: "WeChat",
+    navigationBarTextStyle: "black"
+  },
+  ...weappConfig,
 };
