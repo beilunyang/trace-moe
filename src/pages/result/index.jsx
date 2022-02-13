@@ -21,7 +21,7 @@ class Result extends PureComponent {
     service.init();
     let searchedUrl;
     let searchedFilePath;
-    const { forwardMaterials } = Taro.getEnterOptionsSync() || getEnterOptionsSync();
+    const { forwardMaterials } = Taro?.getEnterOptionsSync?.() || getEnterOptionsSync();
     console.log('componentDidMount forwardMaterials:', forwardMaterials);
     if (forwardMaterials) {
       // 从聊天素材打开小程序
