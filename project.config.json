@@ -1,81 +1,93 @@
 {
-  "miniprogramRoot": "dist/",
-  "projectname": "trace-moe",
-  "description": "",
-  "appid": "wx8ae89a3eb21731aa",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "enhance": true,
-    "postcss": false,
-    "preloadBackgroundData": false,
-    "minified": false,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": false,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": false,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": false,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "showES6CompileOption": false
-  },
-  "compileType": "miniprogram",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-  "cloudfunctionRoot": "cloudQQ/",
-  "qqappid": "1112077934",
-  "scripts": {
-    "beforeCompile": "",
-    "beforePreview": "",
-    "beforeUpload": ""
-  },
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "id": -1,
-          "name": "检索结果页",
-          "pathName": "pages/result/index",
-          "query": "",
-          "scene": ""
-        },
-        {
-          "id": -1,
-          "name": "动画详情页",
-          "pathName": "pages/detail/index",
-          "query": "",
-          "scene": ""
-        }
-      ]
-    }
-  }
+	"miniprogramRoot": "dist/",
+	"projectname": "trace-moe",
+	"description": "",
+	"appid": "wx8ae89a3eb21731aa",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"enhance": true,
+		"postcss": false,
+		"preloadBackgroundData": false,
+		"minified": false,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": false,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"lazyloadPlaceholderEnable": false,
+		"useMultiFrameRuntime": true,
+		"useApiHook": true,
+		"useApiHostProcess": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"enableEngineNative": false,
+		"useIsolateContext": true,
+		"userConfirmedBundleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true,
+		"showES6CompileOption": false,
+		"remoteDebugLogEnable": false,
+		"prefetch": false
+	},
+	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+	"cloudfunctionRoot": "cloud/",
+	"qqappid": "1112077934",
+	"libVersion": "2.26.0",
+	"srcMiniprogramRoot": "dist/",
+	"packOptions": {
+		"ignore": [],
+		"include": []
+	},
+	"editorSetting": {
+		"tabIndent": "insertSpaces",
+		"tabSize": 2
+	},
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"plugin": {
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"list": [
+				{
+					"id": -1,
+					"name": "检索结果页",
+					"pathName": "pages/result/index",
+					"query": "",
+					"scene": ""
+				},
+				{
+					"id": -1,
+					"name": "动画详情页",
+					"pathName": "pages/detail/index",
+					"query": "",
+					"scene": ""
+				}
+			]
+		}
+	}
 }

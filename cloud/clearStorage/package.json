@@ -1,5 +1,5 @@
 {
-  "name": "search",
+  "name": "clearStorage",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "form-data": "^4.0.0",
-    "node-fetch": "^2.6.1",
-    "qq-server-sdk": "latest"
+    "@cloudbase/manager-node": "latest"
   }
 }

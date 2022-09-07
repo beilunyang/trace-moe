@@ -11,6 +11,6 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.1",
-    "qq-server-sdk": "latest"
+    "wx-server-sdk": "~2.5.3"
   }
 }

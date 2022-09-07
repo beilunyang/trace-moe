@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.1",
-    "wx-server-sdk": "~2.5.3"
+    "qq-server-sdk": "latest"
   }
 }

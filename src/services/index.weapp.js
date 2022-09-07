@@ -9,7 +9,7 @@ const init = () => {
 const search = async ({ url, filePath }) => {
   try {
     const res = await wx.cloud.callFunction({
-      name: "search",
+      name: "searchWX",
       data: {
         url,
         fileName: filePath,
@@ -52,7 +52,7 @@ const search = async ({ url, filePath }) => {
 const searchAnilist = async id => {
   try {
     const res = await wx.cloud.callFunction({
-      name: "searchAnilist",
+      name: "searchAnilistWX",
       data: {
         query: `{
           Media(id: ${id}, type: ANIME) {
