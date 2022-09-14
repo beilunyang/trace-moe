@@ -3,7 +3,7 @@ import { encode } from "js-base64";
 /* eslint-disable no-undef */
 const init = () => {
   qq.cloud.init({
-    env: "trace-moe-qq-8c3086",
+    env: 'tracemoe-qq-5gh6imzmeed3239d',
     traceUser: true
   });
 };
